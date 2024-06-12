@@ -31,8 +31,8 @@ fetch(
     appendMovies(response.results);
   })
   .catch((err) => console.error(err));
-  //
-  // Append movies for home page
+//
+// Append movies for home page
   
   function appendMovies(movies) {
     console.log(movies);
@@ -48,10 +48,22 @@ fetch(
       moviePoster.src = `https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`;    
       moviePoster.alt = movie.title;
       moviePoster.classList.add("w-full", "h-auto", "rounded-lg");
+// title
+      const movieTitle = document.createElement("h2");
+      movieTitle.textContent = movie.title;
+      movieTitle.classList.add("text-xl", "font-bold", "mb-2");
+// pverview
+      const movieOverview = document.createElement("p");
+      movieOverview.textContent = movie.overview;
+      movieOverview.classList.add("text-gray-700", "mt-2", "text-[10px]");
+
 
       movieItem.appendChild(moviePoster);
-      movieList.appendChild(movieItem);
+      movieItem.appendChild(movieTitle);
+      movieItem.appendChild(movieOverview);
 
+      movieList.appendChild(movieItem);
     });
   }
+
 // End Amarbayars Js part
