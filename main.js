@@ -63,14 +63,35 @@ fetch(
       const movieOverview = document.createElement("p");
       movieOverview.textContent = movie.overview;
       movieOverview.classList.add("text-gray-700", "mt-2", "text-[10px]");
-
+// favorite button
+      const favoriteButton = document.createElement("button");
+      favoriteButton.textContent = "Add to Favorites";
+      favoriteButton.classList.add(
+        "bg-green-500",
+        "text-white",
+        "p-2",
+        "rounded",
+        "mt-2"
+      );
+      favoriteButton.addEventListener("click", () => addToFavorites(movie));
 
       movieItem.appendChild(moviePoster);
       movieItem.appendChild(movieTitle);
       movieItem.appendChild(movieOverview);
+      movieItem.appendChild(favoriteButton);
 
       movieList.appendChild(movieItem);
     });
+  }
+// favorites button function
+  function addToFavorites(movie) {
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    if (!favorites.some((favorite) => favorite.id === movie.id)) {
+      favorites.push(movie);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    } else {
+      alert(`${movie.title}" is already in favorites.`);
+    }
   }
 
 // End Amarbayars Js part
