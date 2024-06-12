@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="main.js"></script>
+
+
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Movie Diary-Home</title>
 
     <script>
+
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+              }
+            }
+          }
+        }
+      </script>
+      <script src="main.js"></script>
+</head>
+
+<body>
+<!-- Start Felipes Part (Nav Bar) -->
+    <header>
       tailwind.config = {
         theme: {
           extend: {
@@ -30,6 +52,7 @@
       }
     </style>
   </head>
+
 
   <body>
     <!-- Start Felipes Part (Nav Bar) -->
@@ -103,9 +126,19 @@
 
       <!-- End Sebastian Part (Search Bar) -->
 
+
+<!-- Start Amarbayar Part (Movie Cards) -->
+      <div class="mx-auto container my-4">
+        <div id="movie-list" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+<!-- Javascript results-->
+        </div>
+      </div>
+<!-- End Amarbayar Part (Movie Cards) -->
+
       <!-- Start Amarbayar Part (Movie Cards) -->
 
       <!-- End Amarbayar Part (Movie Cards) -->
+
     </main>
 
     <!-- Start Sebastian Part (Footer) -->
