@@ -1,41 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="journal.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Movie Diary-Journal</title>
 
     <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-              }
-            }
-          }
-        }
-      </script>
-</head>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {},
+          },
+        },
+      };
+    </script>
+    <style>
+      .hide-placeholder::placeholder {
+        opacity: 1;
+      }
 
-<body>
-<!-- Start Felipes Part (Nav Bar) -->
-    <header>
+      .hide-placeholder:focus::placeholder {
+        opacity: 0;
+      }
 
+      .main-nav-link:link,
+      .main-nav-link:visited {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+      .main-nav-link:hover,
+      .main-nav-link:active {
+        color: #fedf39;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Start Felipes Part (Nav Bar) -->
+    <header class="relative z-10">
+      <div
+        class="flex items-center h-[6.8rem] px-[4.8rem] bg-[hsl(213,82%,2%)]"
+      >
+        <div class="flex-1 flex justify-center">
+          <a href="/index.html" class="flex justify-center items-center">
+            <img class="h-[2.2rem]" src="/Multi-module app/logo.webp" alt="" />
+            <span class="inline-block text-[24px] text-white border px-4 py-2">
+              The Movie Club
+            </span>
+          </a>
+        </div>
+        <nav class="flex-1 flex justify-center bg-transparent">
+          <ul class="list-none flex items-center gap-[3.2rem]">
+            <li>
+              <a
+                class="inline-block no-underline font-medium transition-all duration-300 main-nav-link text-white"
+                href="/index.html"
+                >HOME</a
+              >
+            </li>
+            <li>
+              <a
+                class="inline-block no-underline border-b-2 border-red-500 font-medium transition-all duration-300 main-nav-link text-white"
+                href=""
+                >JOURNAL</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="flex-1 flex justify-center items-center text-black">
+          <div class="flex gap-2">
+            <input
+              type="text"
+              class="px-4 py-2 border border-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 hide-placeholder"
+              placeholder="Search for a movie"
+            />
+            <button
+              class="px-4 py-2 bg-[#FEDF39] text-black hover:bg-[#C6AD28] transition-all duration-300"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
     </header>
-<!-- End Felipes Part (Nav Bar) -->
-    
-    <main>
+    <!-- End Felipes Part (Nav Bar) -->
 
-    </main>
+    <main></main>
 
-<!-- Start Sebastian Part (Footer) -->
-    <footer>
+    <!-- Start Sebastian Part (Footer) -->
+    <footer></footer>
+    <!-- Start Sebastian Part (Footer) -->
 
-    </footer>
-<!-- Start Sebastian Part (Footer) -->
- 
-</body>
-
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
 </html>

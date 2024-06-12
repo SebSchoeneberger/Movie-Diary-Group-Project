@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Movie Diary-Home</title>
 
     <script>
+
         tailwind.config = {
           theme: {
             extend: {
@@ -23,19 +30,101 @@
 <body>
 <!-- Start Felipes Part (Nav Bar) -->
     <header>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {},
+          },
+        },
+      };
+    </script>
+    <style>
+      .main-nav-link:link,
+      .main-nav-link:visited {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+      .main-nav-link:hover,
+      .main-nav-link:active {
+        color: #fedf39;
+      }
+    </style>
+  </head>
 
+
+  <body>
+    <!-- Start Felipes Part (Nav Bar) -->
+    <header class="relative z-10">
+      <div
+        class="flex justify-between items-center h-[6.8rem] px-[4.8rem] bg-[hsl(213,82%,2%)]"
+      >
+        <div class="flex-1 flex justify-center">
+          <a href="" class="flex justify-center items-center">
+            <span
+              class="inline-block text-[24px] text-white text-whit border px-4 py-2"
+              >The Movie Club</span
+            >
+          </a>
+        </div>
+        <nav class="flex-1 flex justify-center bg-transparent">
+          <ul class="list-none flex items-center gap-[3.2rem]">
+            <li>
+              <a
+                class="inline-block no-underline font-medium border-b-2 border-red-500 transition-all duration-300 main-nav-link text-white main-nav-link"
+                href=""
+                >HOME</a
+              >
+            </li>
+            <li>
+              <a
+                class="inline-block no-underline font-medium transition-all duration-300 main-nav-link text-white main-nav-link"
+                href="/journal.html"
+                >JOURNAL</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="flex-1 flex justify-center items-center text-white">
+          <a
+            class="flex gap-3 justify-center items-center main-nav-link"
+            href=""
+            ><span>My Favorite Movies</span>
+            <ion-icon
+              class="main-nav-link cursor-pointer text-[24px]"
+              name="heart-outline"
+            ></ion-icon>
+          </a>
+        </div>
+      </div>
     </header>
-<!-- End Felipes Part (Nav Bar) -->
-    
+    <section class="relative">
+      <div class="w-full h-[70vh] overflow-hidden">
+        <img src="/img/hero.jpg" class="w-full object-cover" alt="Hero Image" />
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-black/50 to-black/50 flex flex-col items-center justify-center text-center text-white"
+      >
+        <div class="space-y-4 mt-40">
+          <h1 class="text-4xl">Unlimited movies, TV shows, and more</h1>
+          <span class="text-2xl">Watch anywhere. Cancel anytime</span>
+          <p class="text-lg">
+            Ready to watch? Look for your favorite movie completely free.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- End Felipes Part (Nav Bar) -->
+
     <main>
-<!-- Start Felipes Part (Hero Section) -->
+      <!-- Start Felipes Part (Hero Section) -->
 
-<!-- End Felipes Part(Hero Section) -->
+      <!-- End Felipes Part(Hero Section) -->
 
+      <!-- Start Sebastian Part (Search Bar) -->
 
-<!-- Start Sebastian Part (Search Bar) -->
-
-<!-- End Sebastian Part (Search Bar) -->
+      <!-- End Sebastian Part (Search Bar) -->
 
 
 <!-- Start Amarbayar Part (Movie Cards) -->
@@ -45,14 +134,24 @@
         </div>
       </div>
 <!-- End Amarbayar Part (Movie Cards) -->
+
+      <!-- Start Amarbayar Part (Movie Cards) -->
+
+      <!-- End Amarbayar Part (Movie Cards) -->
+
     </main>
 
-<!-- Start Sebastian Part (Footer) -->
-    <footer>
+    <!-- Start Sebastian Part (Footer) -->
+    <footer></footer>
+    <!-- Start Sebastian Part (Footer) -->
 
-    </footer>
-<!-- Start Sebastian Part (Footer) -->
-
-</body>
-
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
 </html>
