@@ -3,14 +3,82 @@
 // End Felipes Js part
 
 // Start Sebastians Js part
-
 const searchInput = document.querySelector("[data-search]");
 
-searchInput.addEventListener("input", (e) => {
-  const value = e.target.value;
-  console.log(value);
+searchInput.addEventListener('input', e => { 
+    const value = e.target.value.toLowerCase();
+
+    allMovies.forEach(movie => {
+        const movieId = document.getElementById(movie.id);
+        if (movie.title.toLowerCase().includes(value)) {
+            movieId.classList.remove("hidden");
+        } else {
+            movieId.classList.add("hidden");
+        }
+    });
 });
 
+function showAllMovies() {
+    allMovies.forEach(movie => {
+        const movieId = document.getElementById(movie.id);
+        movieId.classList.remove("hidden");
+    });
+}
+
+const genreAction =document.querySelector('#action');
+genreAction.addEventListener('click', e => {
+    allMovies.forEach(movie => {
+        const movieId = document.getElementById(movie.id);
+        if (movie.genre_ids.length == 3) {
+            movieId.classList.remove("hidden");
+        } else {
+            movieId.classList.add("hidden");
+        }
+    })
+} )
+
+const genreDrama =document.querySelector('#drama');
+genreDrama.addEventListener('click', e => {
+    allMovies.forEach(movie => {
+        const movieId = document.getElementById(movie.id);
+        if (movie.genre_ids.length == 4) {
+            movieId.classList.remove("hidden");
+        } else {
+            movieId.classList.add("hidden");
+        }
+    })
+} )
+
+const genreComedy =document.querySelector('#comedy');
+genreComedy.addEventListener('click', e => {
+    allMovies.forEach(movie => {
+        const movieId = document.getElementById(movie.id);
+        if (movie.genre_ids.length == 5) {
+            movieId.classList.remove("hidden");
+        } else {
+            movieId.classList.add("hidden");
+        }
+    })
+} )
+
+const genreSciFi =document.querySelector('#sciFi');
+genreSciFi.addEventListener('click', e => {
+    allMovies.forEach(movie => {
+        const movieId = document.getElementById(movie.id);
+        if (movie.genre_ids.length == 3) {
+            movieId.classList.remove("hidden");
+        } else {
+            movieId.classList.add("hidden");
+        }
+    })
+} )
+
+const resetButton = document.querySelector('#reset');
+resetButton.addEventListener('click', e => {
+    showAllMovies();
+});
+
+let allMovies = [];
 // End Sebastians Js part
 
 // Start Amarbayars Js part
@@ -33,7 +101,8 @@ fetch(
 )
   .then((response) => response.json())
   .then((response) => {
-    appendMovies(response.results);
+    allMovies = response.results;
+    appendMovies(allMovies);
   })
   .catch((err) => console.error(err));
 //
@@ -48,6 +117,7 @@ function appendMovies(movies) {
     // item
     const movieItem = document.createElement("div");
     movieItem.classList.add("bg-white", "p-4", "rounded-lg", "shadow-md");
+    movieItem.id = movie.id;
     // poster
     const moviePoster = document.createElement("img");
     moviePoster.src = `https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`;
