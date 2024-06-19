@@ -1,9 +1,16 @@
 // Start Felipes Js part
+
+// Execute the script after the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
+  // Get the container for favorite movies
   const favoriteMoviesContainer = document.getElementById("favorite-movies");
 
+  // Function to load favorite movies from localStorage
   function loadFavoriteMovies() {
+    // Retrieve the favorite movies from localStorage
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    // If there are no favorite movies, display a message
     if (!favorites.length) {
       favoriteMoviesContainer.innerHTML = `
       <div class="flex flex-col gap-6">
@@ -14,14 +21,17 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // Clear the container if there are favorite movies
     favoriteMoviesContainer.innerHTML = "";
 
+    // Create and append a movie item for each favorite movie
     favorites.forEach((movie) => {
       const movieItem = createMovieItem(movie);
       favoriteMoviesContainer.appendChild(movieItem);
     });
   }
 
+  // Function to create a movie item element
   function createMovieItem(movie) {
     const movieItem = document.createElement("div");
     movieItem.classList.add(
@@ -47,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     movieOverview.textContent = movie.overview;
     movieOverview.classList.add("text-gray-700", "mt-2", "text-[14px]", "mb-4");
 
+    // Load and display the comment if it exists
     const comment = loadComment(movie.id);
     movieOverview.textContent = comment ? `"${comment}"` : movie.overview;
 
@@ -73,8 +84,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "w-full"
     );
 
+    // Add event listener to delete the movie from favorites
     deleteButton.addEventListener("click", () => deleteFromFavorites(movie.id));
 
+    // Add event listener to add comments to the movie
     addCommentsButton.addEventListener("click", function () {
       const comment = prompt("What do you think about the movie?");
       if (comment) {
@@ -101,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return movieItem;
   }
 
+  // Function to delete a movie from favorites
   function deleteFromFavorites(movieId) {
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     favorites = favorites.filter((movie) => movie.id !== movieId);
@@ -108,27 +122,32 @@ document.addEventListener("DOMContentLoaded", () => {
     loadFavoriteMovies(); // Reload the favorite movies list
   }
 
+  // Function to load a comment for a movie from localStorage
   function loadComment(movieId) {
     const comments = JSON.parse(localStorage.getItem("comments")) || {};
     return comments[movieId] || null;
   }
 
+  // Function to save a comment for a movie to localStorage
   function saveComment(movieId, comment) {
     const comments = JSON.parse(localStorage.getItem("comments")) || {};
     comments[movieId] = comment;
     localStorage.setItem("comments", JSON.stringify(comments));
   }
 
+  // Load favorite movies when the script runs
   loadFavoriteMovies();
 });
 // End Felipes Js part
 
 // Start of Search Engine
 
+// Execute the script after the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.querySelector(".search-input");
   const dropdown = document.getElementById("dropdown-container");
 
+  // Event listener for search input click
   searchInput.addEventListener("click", async (event) => {
     console.log("Search input clicked");
     event.stopPropagation(); // Prevent immediate hiding
@@ -136,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdown.style.display = "block";
     console.log("Dropdown displayed");
 
-    // Fetch movies from the API
+    // Fetch popular movies from the API
     let page = 1;
     const options = {
       method: "GET",
@@ -185,6 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "rounded"
         );
 
+        // Event listener to add the movie to favorites
         favoriteButton.addEventListener("click", () => {
           addToFavorites(movie);
           displayMovieOnPage(movie); // Display the added movie immediately
@@ -198,6 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error fetching movies", err);
     }
 
+    // Function to add a movie to favorites
     function addToFavorites(movie) {
       let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
       if (!favorites.some((favorite) => favorite.id === movie.id)) {
@@ -208,6 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
+    // Function to display a movie on the page
     function displayMovieOnPage(movie) {
       const favoriteMoviesContainer =
         document.getElementById("favorite-movies");
