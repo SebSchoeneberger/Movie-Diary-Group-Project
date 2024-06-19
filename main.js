@@ -91,6 +91,7 @@ let allMovies = [];
 //
 //
 let page = 1;
+// page number is set to 1 for fetching the first page of movies
 const options = {
   method: "GET",
   headers: {
@@ -116,29 +117,36 @@ fetch(
 
 function appendMovies(movies) {
   console.log(movies);
+// log the movies to the console for debuging
   const movieList = document.getElementById("movie-list");
   movieList.innerHTML = "";
 
   movies.forEach((movie) => {
     // item
     const movieItem = document.createElement("div");
+    //create container div for each movie item
     movieItem.classList.add("bg-white", "p-4", "rounded-lg", "shadow-md");
     movieItem.id = movie.id;
     // poster
     const moviePoster = document.createElement("img");
+    //create img element for the movie poster
     moviePoster.src = `https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`;
     moviePoster.alt = movie.title;
+    //set the src attribute to poster url with width=220, height=330
     moviePoster.classList.add("w-full", "h-auto", "rounded-lg");
     // title
     const movieTitle = document.createElement("h2");
+    //create h2 element for the movie title
     movieTitle.textContent = movie.title;
     movieTitle.classList.add("text-xl", "font-bold", "mb-2");
-    // pverview
+    // overview
     const movieOverview = document.createElement("p");
+    //create p element for movie overview
     movieOverview.textContent = movie.overview;
     movieOverview.classList.add("text-gray-700", "mt-2", "text-[10px]");
     // favorite button
     const favoriteButton = document.createElement("button");
+    //create button to add movie to favorites
     favoriteButton.textContent = "Add to Favorites";
     favoriteButton.classList.add(
       "bg-green-500",
@@ -147,24 +155,30 @@ function appendMovies(movies) {
       "rounded",
       "mt-2"
     );
+    //add event listener to handle click events
     favoriteButton.addEventListener("click", () => addToFavorites(movie));
-
+    //append poster,title,overview and favorite button to movie item
     movieItem.appendChild(moviePoster);
     movieItem.appendChild(movieTitle);
     movieItem.appendChild(movieOverview);
     movieItem.appendChild(favoriteButton);
-
+    //append movie item to movie list
     movieList.appendChild(movieItem);
   });
 }
-// favorites button function
+// favorites button function to add movie to favorite list
 function addToFavorites(movie) {
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+//retrieve existing favorites from local storage or initialize empty array
   if (!favorites.some((favorite) => favorite.id === movie.id)) {
+//check if the movie is not already in favorites list
     favorites.push(movie);
+//add movie to the favorite list
     localStorage.setItem("favorites", JSON.stringify(favorites));
+//save the updated favorites list to local storage
   } else {
     alert(`${movie.title}" is already in favorites.`);
+//alert the user if the movies is already in the favorites list
   }
 }
 
