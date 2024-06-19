@@ -1,13 +1,14 @@
-// Start Felipes Js part
-
-// End Felipes Js part
-
 // Start Sebastians Js part
+
+// Selecting the Input field from the HTML document through a querySelector
 const searchInput = document.querySelector("[data-search]");
 
+// Adding an Event Listener to the Input field previously selected. Also saving the value of the user input in a variable and transforming it to lower case letters.
 searchInput.addEventListener('input', e => { 
     const value = e.target.value.toLowerCase();
 
+// A function looping through all the movies and checking if the value of the User input is included in the Movies Title.
+// If the Search Input value is not included in the movie title, the function will add "Display: hidden" to the movie Card and the Movie wont be displayed. 
     allMovies.forEach(movie => {
         const movieId = document.getElementById(movie.id);
         if (movie.title.toLowerCase().includes(value)) {
@@ -18,6 +19,7 @@ searchInput.addEventListener('input', e => {
     });
 });
 
+// A funtion that will remove the display:hidden class from all movies, so that if the user presses the reset button all movies will be shown again.
 function showAllMovies() {
     allMovies.forEach(movie => {
         const movieId = document.getElementById(movie.id);
@@ -25,6 +27,14 @@ function showAllMovies() {
     });
 }
 
+// Adding a Event listener to the reset button and the calling the function to show all movies when the reset button is operated.
+const resetButton = document.querySelector('#reset');
+resetButton.addEventListener('click', e => {
+    showAllMovies();
+});
+
+/* These are four functions, each for one genre. When one of the genre buttons is pressed, the funtion loops through all movies and checks if the genre of the movie is equal to the
+ genre selected. If so the movie will be displayed, if else the class display : hideen will be added and the movie will be not be shown. */
 const genreAction =document.querySelector('#action');
 genreAction.addEventListener('click', e => {
     allMovies.forEach(movie => {
@@ -73,11 +83,7 @@ genreSciFi.addEventListener('click', e => {
     })
 } )
 
-const resetButton = document.querySelector('#reset');
-resetButton.addEventListener('click', e => {
-    showAllMovies();
-});
-
+// creating a array with all the movies that will later take the response from the fetch request.
 let allMovies = [];
 // End Sebastians Js part
 
